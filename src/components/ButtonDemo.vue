@@ -21,7 +21,7 @@
     </div>
     <h1>示例4</h1>
     <div>
-        <Button theme="button">禁用按钮</Button>
+        <Button theme="button" disable>禁用按钮</Button>
         <Button theme="link" disable>禁用链接按钮</Button>
         <Button theme="text" disable>禁用按钮</Button>
     </div>
