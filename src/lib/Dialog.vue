@@ -1,19 +1,20 @@
 <template>
 <template v-if="visible">
-   <div class="yys-dialog-overlay"></div>
-    <div class="yys-dialog-wrapper">
-        <div class="yys-dialog">
-            <header>标题 <span class="yys-dialog-close"></span></header>
-            <main>
-                <p>第一行字</p>
-                <p>第二行字</p>
-            </main>
-            <footer>
-                <Button level="main">OK</Button>
-                <Button>Cancel</Button>
-            </footer>
+    <Teleport to="body">
+       <div class="yys-dialog-overlay" @click="closeOnClickLay"></div>
+        <div class="yys-dialog-wrapper">
+            <div class="yys-dialog">
+                <header><slot name="title"/> <span @click="close" class="yys-dialog-close"></span></header>
+                <main>
+                    <slot name="content"/>
+                </main>
+                <footer>
+                    <Button level="main" @click="ok">OK</Button>
+                    <Button @click="cancel">Cancel</Button>
+                </footer>
+            </div>
         </div>
-    </div>
+    </Teleport>
 </template>
 </template>
 
@@ -21,12 +22,47 @@
     import Button from "./Button.vue";
     export default {
         props:{
+            title:{
+                type:String,
+                default:'提示'
+            },
           visible:{
               type:Boolean,
               default:false
-          }
+          },
+            closeOnClickLay:{
+              type: Boolean,
+                default: true
+            },
+            ok:{
+              type:Function
+            },
+            cancel:{
+                type:Function
+            }
         },
-        components:{Button}
+        components:{Button},
+        setup(props,context){
+            const close = () =>{
+                context.emit('update:visible',false)
+            }
+            const closeOnClickLay = () =>{
+                if (props.closeOnClickLay){
+                    close()
+                }
+            }
+            const ok =() =>{
+                // if (props.ok && props.ok() !== false)
+                if (props.ok?.() !== false){
+                    close()
+                }
+            }
+            const cancel = () =>{
+                props.cancel?.()
+                close()
+            }
+            return {close,closeOnClickLay,ok,cancel}
+        }
     }
 </script>
 
