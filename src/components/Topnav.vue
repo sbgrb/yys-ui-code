@@ -1,11 +1,19 @@
 <template>
 <div class="topNav">
-    <div class="logo">LOGO</div>
+    <div class="logo">
+        <svg class="icon">
+            <use xlink:href="#icon-cat"></use>
+        </svg>
+    </div>
     <ul class="menu">
         <li>菜单1</li>
         <li>菜单2</li>
     </ul>
-    <span class="toggleAside"  @click="toggleMenu"></span>
+    <span class="toggleAside"  @click="toggleMenu">
+        <svg class="icon">
+            <use xlink:href="#icon-list"></use>
+        </svg>
+    </span>
 </div>
 </template>
 <script lang="ts">
@@ -22,8 +30,9 @@
 </script>
 
 <style lang="scss" scoped>
+    $color:#007974;
 .topNav {
-    background: greenyellow;
+    color: $color;
     display: flex;
     padding: 16px;
     position: fixed;
@@ -36,6 +45,10 @@
     >.logo {
         max-width: 6em;
         margin-right: auto;
+        > svg{
+            width: 32px;
+            height: 32px;
+        }
     }
 
     >.menu {
@@ -51,11 +64,14 @@
         display: none;
         width: 24px;
         height: 24px;
-        background: red;
         position: absolute;
         left: 16px;
         top: 50%;
         transform: translateY(-50%);
+        > svg{
+            width: 36px;
+            height: 36px;
+        }
     }
     @media (max-width: 500px) {
         > .menu{
