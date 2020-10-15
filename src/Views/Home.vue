@@ -1,12 +1,12 @@
 <template>
     <div>
         <div class="topNavAndBanner">
-            <TopNav/>
+            <router-link to="doc/install" class="topRight">文档</router-link>
             <div class="banner">
-                <h1>UI</h1>
-                <h2>一个UI框架</h2>
+                <h1>yys-UI</h1>
+                <h2>个人的第一个库</h2>
                 <p class="actions">
-                    <a href="https://github.com">Github</a>
+                    <a href="https://github.com/sbgrb/yys-ui-code">Github</a>
                     <router-link to="/doc">开始</router-link>
                 </p>
             </div>
@@ -32,7 +32,7 @@
                         <use xlink:href="#icon-book"></use>
                     </svg>
                     <h3>代码易读</h3>
-                    <p>源代码 简洁</p>
+                    <p>源码 通俗易懂</p>
                 </li>
             </ul>
         </div>
@@ -53,6 +53,15 @@
     $green: #02bcb0;
     $border-radius: 4px;
     $color: #007974;
+    .topRight{
+        color:gray;
+        display:inline-block;
+        padding: 16px 0;
+        padding-left: 90%;
+        &:hover {
+            text-decoration: none;
+        }
+    }
     .topNavAndBanner {
         background: linear-gradient(145deg, rgba(227, 255, 253, 1) 0%, rgba(183, 233, 230, 1) 100%);
         clip-path: ellipse(80% 60% at 50% 40%);

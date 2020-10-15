@@ -5,9 +5,7 @@
                 <use xlink:href="#icon-cat"></use>
             </svg>
         </router-link>
-        <ul class="menu">
-            <li>文档</li>
-        </ul>
+        <ul class="menu"></ul>
         <svg v-if="toggleMenuButtonVisible" class="toggleAside"  @click="toggleMenu">
             <use xlink:href="#icon-list"></use>
         </svg>
